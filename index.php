@@ -1,5 +1,6 @@
 <?php
-// Isertion du fichier controler
+try{
+    // Isertion du fichier controler
 require('controller/frontend.php');
 
 if (isset($_GET['action'])) {
@@ -11,7 +12,7 @@ if (isset($_GET['action'])) {
             post();
         }
         else {
-            echo 'Erreur : aucun identifiant de billet envoyé';
+           throw new Exception('Erreur : aucun identifiant de billet envoyé');
         }
     }
     elseif ($_GET['action'] == 'addComment') {
@@ -20,14 +21,21 @@ if (isset($_GET['action'])) {
                 addComment($_GET['id'], $_POST['author'], $_POST['comment']);
             }
             else {
-                echo 'Erreur : tous les champs ne sont pas remplis !';
+                throw new Exception('Erreur : tous les champs ne sont pas remplis !') ;
             }
         }
         else {
-            echo 'Erreur : aucun identifiant de billet envoyé';
+           throw new Exception('Erreur : aucun identifiant de billet envoyé');
         }
     }
 }
 else {
     listPosts();
+}
+
+}
+catch(Exception $e){
+
+    die("Erreur: " .$e->getMessage());
+
 }
