@@ -35,7 +35,6 @@ else {
 
 }
 catch(Exception $e){
-
-    die("Erreur: " .$e->getMessage());
-
+    $error=$e->getMessage();
+    require("view/frontend/errorView.php");
 }

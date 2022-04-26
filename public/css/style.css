@@ -25,3 +25,10 @@ a
     text-decoration: none;
     color: blue;
 }
+.error{
+    display: grid;
+    height: 25%;
+    width: 25%;
+    color: white;
+    background-color: red;
+}
